@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - "5672:5672" # AMQP
+      - "15672:15672" # Interfaz de gestión de RabbitMQ
+      - "15692:15692" # Interfaz de gestión de RabbitMQ
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+
+  prometheus:
+    image: prom/prometheus:latest
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+    depends_on:
+      - rabbitmq
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+      
+volumes:
+  prometheus:
