@@ -1,0 +1,104 @@
+{
+	"info": {
+		"_postman_id": "b844e844-1597-4c02-954d-291436d48297",
+		"name": "tarea 3",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3226114"
+	},
+	"item": [
+		{
+			"name": "Venta",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"numero\": 5,\n    \"productos\": [\n        {\n            \"name\": \"coca cola\",\n            \"stock\": 1,\n            \"price\": 1.25\n        },\n        {\n            \"name\": \"agua\",\n            \"stock\": 2,\n            \"price\": 0.50\n        },\n        {\n            \"name\": \"papitas\",\n            \"stock\": 10,\n            \"price\": 0.75\n        }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/venta",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"venta"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Producto",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Rod\",\n    \"stock\":0,\n    \"price\":1.25\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/products",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Publish",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8000/publish?x=2&y=4",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"publish"
+					],
+					"query": [
+						{
+							"key": "x",
+							"value": "2"
+						},
+						{
+							"key": "y",
+							"value": "4"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
